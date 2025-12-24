@@ -1,0 +1,177 @@
+
+CREATE TABLE IF NOT EXISTS public.adres
+(
+    id serial NOT NULL,
+    adress_punct character varying(255) COLLATE pg_catalog."default",
+    CONSTRAINT adres_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS public.category_tovar
+(
+    id_pk_category_tovar serial NOT NULL,
+    category character varying(155) COLLATE pg_catalog."default",
+    CONSTRAINT category_tovar_pkey PRIMARY KEY (id_pk_category_tovar)
+);
+
+CREATE TABLE IF NOT EXISTS public.name_tovar
+(
+    id serial NOT NULL,
+    name_tovar character varying COLLATE pg_catalog."default",
+    CONSTRAINT name_tovar_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS public.postavchik
+(
+    id serial NOT NULL,
+    postavchik_name character varying(155) COLLATE pg_catalog."default",
+    CONSTRAINT postavchik_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS public.proizvoditel
+(
+    id_pk_proiz serial NOT NULL,
+    name_proizv character varying(155) COLLATE pg_catalog."default",
+    CONSTRAINT proizvoditel_pkey PRIMARY KEY (id_pk_proiz)
+);
+
+CREATE TABLE IF NOT EXISTS public.stasus_zakaz
+(
+    id serial NOT NULL,
+    stasus character varying(155) COLLATE pg_catalog."default",
+    CONSTRAINT stasus_zakaz_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS public.tovar
+(
+    name_tovar_fk integer,
+    edin_izmer character varying(5) COLLATE pg_catalog."default",
+    sale numeric(10, 2),
+    postavchik_fk integer,
+    proizvoditel_fk integer,
+    category_name_fk integer,
+    dicsount integer,
+    quantity integer,
+    opisanie character varying(255) COLLATE pg_catalog."default",
+    picture character varying(255) COLLATE pg_catalog."default",
+    id_article character varying(155) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT tovar_pkey PRIMARY KEY (id_article)
+);
+
+CREATE TABLE IF NOT EXISTS public.user_role
+(
+    id serial NOT NULL,
+    role character varying(155) COLLATE pg_catalog."default",
+    CONSTRAINT user_role_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS public.users
+(
+    role_fk integer,
+    fio character varying(155) COLLATE pg_catalog."default" NOT NULL,
+    login character varying(155) COLLATE pg_catalog."default" NOT NULL,
+    password character varying(155) COLLATE pg_catalog."default" NOT NULL,
+    id serial NOT NULL,
+    CONSTRAINT users_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS public.zakaz
+(
+    nomer_zakaza_pk integer NOT NULL DEFAULT nextval('zakaz_nomer_zakaza_seq'::regclass),
+    data_zakaza date,
+    data_dostavki date,
+    adress_fk integer,
+    fio_client_fk integer,
+    cod_poluch integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 901 MINVALUE 901 MAXVALUE 2147483647 CACHE 1 ),
+    status_zakaza_fk integer,
+    CONSTRAINT zakaz_pkey PRIMARY KEY (nomer_zakaza_pk)
+);
+
+CREATE TABLE IF NOT EXISTS public.zakaz_tovar
+(
+    id serial NOT NULL,
+    id_zakaz_fk bigint,
+    article_fk character varying(155) COLLATE pg_catalog."default",
+    quantity integer,
+    CONSTRAINT zakaz_tovar_pkey PRIMARY KEY (id)
+);
+
+ALTER TABLE IF EXISTS public.tovar
+    ADD CONSTRAINT tovar_category_name_fk_fkey FOREIGN KEY (category_name_fk)
+    REFERENCES public.category_tovar (id_pk_category_tovar) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.tovar
+    ADD CONSTRAINT tovar_name_tovar_fk_fkey FOREIGN KEY (name_tovar_fk)
+    REFERENCES public.name_tovar (id) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.tovar
+    ADD CONSTRAINT tovar_postavchik_fk_fkey FOREIGN KEY (postavchik_fk)
+    REFERENCES public.postavchik (id) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.tovar
+    ADD CONSTRAINT tovar_proizvoditel_fk_fkey FOREIGN KEY (proizvoditel_fk)
+    REFERENCES public.proizvoditel (id_pk_proiz) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.users
+    ADD CONSTRAINT users_role_fk_fkey FOREIGN KEY (role_fk)
+    REFERENCES public.user_role (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.zakaz
+    ADD CONSTRAINT zakaz_adress_fk_fkey FOREIGN KEY (adress_fk)
+    REFERENCES public.adres (id) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.zakaz
+    ADD CONSTRAINT zakaz_fio_client_fk_fkey FOREIGN KEY (fio_client_fk)
+    REFERENCES public.users (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.zakaz
+    ADD CONSTRAINT zakaz_status_zakaza_fk_fkey FOREIGN KEY (status_zakaza_fk)
+    REFERENCES public.stasus_zakaz (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.zakaz_tovar
+    ADD CONSTRAINT zakaz_tovar_article_fk_fkey FOREIGN KEY (article_fk)
+    REFERENCES public.tovar (id_article) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.zakaz_tovar
+    ADD CONSTRAINT zakaz_tovar_id_zakaz_fk_fkey FOREIGN KEY (id_zakaz_fk)
+    REFERENCES public.zakaz (nomer_zakaza_pk) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
+    NOT VALID;
+
+END;
