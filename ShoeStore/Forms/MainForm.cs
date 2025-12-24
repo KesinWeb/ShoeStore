@@ -35,6 +35,13 @@ namespace ShoeStore
                 buttonAddTovar.Visible = false;
                 buttonZakaz.Visible = false;
                 buttonAddZakaz.Visible = false;
+                labelS.Visible = false;
+                textSearchBox.Visible = false;
+                labelFilter.Visible = false;
+                checkBoxDesc.Visible = false;
+                checkBoxAsc.Visible = false;
+                labelPostav.Visible = false;
+                comboBoxPostavshik.Visible = false;
             }
             if (RoleName == "Менеджер")
             {

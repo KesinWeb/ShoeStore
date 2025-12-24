@@ -33,8 +33,8 @@
             this.textSearchBox = new System.Windows.Forms.TextBox();
             this.labelS = new System.Windows.Forms.Label();
             this.comboBoxPostavshik = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelFilter = new System.Windows.Forms.Label();
+            this.labelPostav = new System.Windows.Forms.Label();
             this.buttonZakaz = new System.Windows.Forms.Button();
             this.labelRoleName = new System.Windows.Forms.Label();
             this.buttonAddTovar = new System.Windows.Forms.Button();
@@ -101,29 +101,29 @@
             this.comboBoxPostavshik.Text = "Все поставщики";
             this.comboBoxPostavshik.SelectedIndexChanged += new System.EventHandler(this.comboBoxPostavshik_SelectedIndexChanged);
             // 
-            // label1
+            // labelFilter
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(1121, 130);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 19);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Фильтры:";
+            this.labelFilter.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelFilter.AutoSize = true;
+            this.labelFilter.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelFilter.Location = new System.Drawing.Point(1121, 130);
+            this.labelFilter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelFilter.Name = "labelFilter";
+            this.labelFilter.Size = new System.Drawing.Size(82, 19);
+            this.labelFilter.TabIndex = 6;
+            this.labelFilter.Text = "Фильтры:";
             // 
-            // label2
+            // labelPostav
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(1121, 208);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 19);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Поставщик:";
+            this.labelPostav.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelPostav.AutoSize = true;
+            this.labelPostav.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelPostav.Location = new System.Drawing.Point(1121, 208);
+            this.labelPostav.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPostav.Name = "labelPostav";
+            this.labelPostav.Size = new System.Drawing.Size(96, 19);
+            this.labelPostav.TabIndex = 7;
+            this.labelPostav.Text = "Поставщик:";
             // 
             // buttonZakaz
             // 
@@ -255,8 +255,8 @@
             this.Controls.Add(this.buttonAddTovar);
             this.Controls.Add(this.labelRoleName);
             this.Controls.Add(this.buttonZakaz);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelPostav);
+            this.Controls.Add(this.labelFilter);
             this.Controls.Add(this.comboBoxPostavshik);
             this.Controls.Add(this.labelS);
             this.Controls.Add(this.textSearchBox);
@@ -279,8 +279,8 @@
         private System.Windows.Forms.TextBox textSearchBox;
         private System.Windows.Forms.Label labelS;
         private System.Windows.Forms.ComboBox comboBoxPostavshik;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelFilter;
+        private System.Windows.Forms.Label labelPostav;
         private System.Windows.Forms.Button buttonZakaz;
         private System.Windows.Forms.Label labelRoleName;
         private System.Windows.Forms.Button buttonAddTovar;
