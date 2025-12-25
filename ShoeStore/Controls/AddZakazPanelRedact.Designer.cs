@@ -35,10 +35,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.comboBoxStatus = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelDovalenieZakazRedact = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dateTimePickerZakaz = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerVidacha = new System.Windows.Forms.DateTimePicker();
-            this.labelDovalenieZakazRedact = new System.Windows.Forms.Label();
             this.buttonZakazBack = new System.Windows.Forms.Button();
             this.buttonZakazAddRedact = new System.Windows.Forms.Button();
             this.comboBoxAdress = new System.Windows.Forms.ComboBox();
@@ -95,7 +95,6 @@
             this.label2.Size = new System.Drawing.Size(108, 19);
             this.label2.TabIndex = 22;
             this.label2.Text = "Статус заказа";
-
             // 
             // label4
             // 
@@ -128,6 +127,17 @@
             this.panel1.Size = new System.Drawing.Size(889, 32);
             this.panel1.TabIndex = 33;
             // 
+            // labelDovalenieZakazRedact
+            // 
+            this.labelDovalenieZakazRedact.AutoSize = true;
+            this.labelDovalenieZakazRedact.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelDovalenieZakazRedact.Location = new System.Drawing.Point(32, 5);
+            this.labelDovalenieZakazRedact.Margin = new System.Windows.Forms.Padding(5);
+            this.labelDovalenieZakazRedact.Name = "labelDovalenieZakazRedact";
+            this.labelDovalenieZakazRedact.Size = new System.Drawing.Size(352, 24);
+            this.labelDovalenieZakazRedact.TabIndex = 46;
+            this.labelDovalenieZakazRedact.Text = "Добавление/Редактирование заказа";
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -151,17 +161,6 @@
             this.dateTimePickerVidacha.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerVidacha.TabIndex = 44;
             // 
-            // labelDovalenieZakazRedact
-            // 
-            this.labelDovalenieZakazRedact.AutoSize = true;
-            this.labelDovalenieZakazRedact.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelDovalenieZakazRedact.Location = new System.Drawing.Point(32, 5);
-            this.labelDovalenieZakazRedact.Margin = new System.Windows.Forms.Padding(5);
-            this.labelDovalenieZakazRedact.Name = "labelDovalenieZakazRedact";
-            this.labelDovalenieZakazRedact.Size = new System.Drawing.Size(352, 24);
-            this.labelDovalenieZakazRedact.TabIndex = 46;
-            this.labelDovalenieZakazRedact.Text = "Добавление/Редактирование заказа";
-            // 
             // buttonZakazBack
             // 
             this.buttonZakazBack.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -172,6 +171,7 @@
             this.buttonZakazBack.TabIndex = 48;
             this.buttonZakazBack.Text = "Назад";
             this.buttonZakazBack.UseVisualStyleBackColor = false;
+            this.buttonZakazBack.Click += new System.EventHandler(this.buttonZakazBack_Click);
             // 
             // buttonZakazAddRedact
             // 

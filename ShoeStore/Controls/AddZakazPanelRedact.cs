@@ -255,5 +255,11 @@ namespace ShoeStore.Controls
             InsertZakaz();
             MessageBox.Show("Успешно Добавлен Заказ", "Несосал");
         }
+
+        private void buttonZakazBack_Click(object sender, EventArgs e)
+        {
+            MainForm mainForm = this.FindForm() as MainForm;
+            mainForm.LoadZakaz();
+        }
     }
 }
