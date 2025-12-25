@@ -204,10 +204,6 @@ namespace ShoeStore
                 checkBoxAsc.Checked = false;
                 LoadTovar(Filter, Search, FilterPostavshik);
             }
-            else
-            {
-                Filter = "";
-            }
         }
         private void checkBoxAsc_CheckedChanged(object sender, EventArgs e)
         {
@@ -217,10 +213,6 @@ namespace ShoeStore
                 Filter = "ASC";
                 checkBoxDesc.Checked = false;
                 LoadTovar(Filter, Search, FilterPostavshik);
-            }
-            else
-            {
-                Filter = "";
             }
         }
         private void buttonAddZakaz_Click(object sender, EventArgs e)
