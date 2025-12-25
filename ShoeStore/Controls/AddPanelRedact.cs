@@ -40,6 +40,7 @@ namespace ShoeStore.Controls
             maskedTextBoxDiscount.Text = Discount.ToString();
             maskedTextBoxArticle.Text = ArticleTovar;
             textBoxOpisanie.Text = Opisanie;
+            labelIzm.Text = EdinicIzm;
             this.isEditMode = isEditMode;
             if (isEditMode)
             {
@@ -63,13 +64,14 @@ namespace ShoeStore.Controls
             maskedTextBoxDiscount.Text = Discount.ToString();
             maskedTextBoxArticle.Text = ArticleTovar;
             textBoxOpisanie.Text = Opisanie;
+            labelIzm.Text = EdinicIzm;
         }
         public void AddTovar()
         {
             using (NpgsqlConnection connection = new NpgsqlConnection(Resources.connectionDB))
             {
                 connection.Open();
-                string query = @"INSERT INTO public.tovar (name_tovar_fk, edin_izmer, sale, postavchik_fk, proizvoditel_fk, category_name_fk, dicsount, quantity, opisanie, id_article)
+                string query = @"INSERT INTO public.tovar (name_tovar_fk, edin_izmer, sale, postavchik_fk, proizvoditel_fk, category_name_fk, dicsount, quantity, opisanie, picture, id_article)
                                  VALUES (
                                  (SELECT id FROM name_tovar WHERE name_tovar = @name_tovar),
                                  @edin_izmer,
@@ -79,11 +81,13 @@ namespace ShoeStore.Controls
                                  (SELECT id_pk_category_tovar FROM category_tovar WHERE category = @category),
                                  @dicsount,
                                  @quantity,
-                                 @opisanie, @id_article)";
+                                 @opisanie, 
+                                 @picture,
+                                 @id_article)";
                 using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@name_tovar", comboBoxName.Text);
-                    command.Parameters.AddWithValue("@edin_izmer", "шт.");
+                    command.Parameters.AddWithValue("@edin_izmer", labelIzm.Text);
                     command.Parameters.AddWithValue("@sale", Convert.ToDouble(maskedTextBoxSale.Text));
                     command.Parameters.AddWithValue("@postavchik", comboBoxPostavshik.Text);
                     command.Parameters.AddWithValue("@proizvoditel", textBoxProizvoditel.Text);
@@ -91,6 +95,7 @@ namespace ShoeStore.Controls
                     command.Parameters.AddWithValue("@dicsount", Convert.ToInt32(maskedTextBoxDiscount.Text));
                     command.Parameters.AddWithValue("@quantity", Convert.ToInt32(maskedTextBoxQuantity.Text));
                     command.Parameters.AddWithValue("@opisanie", textBoxOpisanie.Text);
+                    command.Parameters.AddWithValue("@picture", buttonDownloadImage.Text);
                     command.Parameters.AddWithValue("@id_article", maskedTextBoxArticle.Text);                  
                     command.ExecuteNonQuery();
                 }                      
@@ -167,7 +172,7 @@ namespace ShoeStore.Controls
                             maskedTextBoxDiscount.Text = reader.GetInt32(6).ToString();
                             maskedTextBoxQuantity.Text = reader.GetInt32(7).ToString();
                             textBoxOpisanie.Text = reader.GetString(8);
-                            buttonDownloadImage.Text = reader.GetString(9);
+                            buttonDownloadImage.Text = reader.IsDBNull(9) ? string.Empty + "Загрузить фото" : reader.GetString(9).ToString();
                             maskedTextBoxArticle.Text = reader.GetString(10);
                         }
                     }
@@ -264,7 +269,7 @@ namespace ShoeStore.Controls
                 MessageBox.Show("Введите описание товара!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            //здесь проверяем режим редактирования или добавления
             if (isEditMode)
             {
                 UpdateTovar();
@@ -275,6 +280,8 @@ namespace ShoeStore.Controls
                 AddTovar();
                 MessageBox.Show("Товар успешно добавлен!", "Информация", MessageBoxButtons.OK);
             }
+            MainForm mainForm = this.FindForm() as MainForm;
+            mainForm.LoadTovar("DESC", "", "Все поставщики");
         }
         //здесь настраиваем маску под 0 индекс, чтобы при клике возвращало в начало строки
         private void maskedTextBoxQuantity_Click(object sender, EventArgs e)
