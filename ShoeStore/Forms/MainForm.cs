@@ -146,6 +146,15 @@ namespace ShoeStore
             redactPanel.LoadTovarData();
             this.flowLayoutPanel1.Controls.Add(redactPanel);
         }
+        public void LoadRedactZakaz(int NomerZakaz)
+        {
+            flowLayoutPanel1.Controls.Clear(); // Очистка текущих элементов перед загрузкой новых
+            AddZakazPanelRedact redactZakazPanel = new AddZakazPanelRedact(true);
+            redactZakazPanel.NomerZakaz = NomerZakaz;
+            redactZakazPanel.SetZakazControl();
+            redactZakazPanel.SelectZakaz();           
+            this.flowLayoutPanel1.Controls.Add(redactZakazPanel);
+        }
         private void MainForm_Load(object sender, EventArgs e)
         {
             string imageFolder = Path.Combine(Application.StartupPath, "images");
@@ -216,7 +225,7 @@ namespace ShoeStore
         }
         private void buttonAddZakaz_Click(object sender, EventArgs e)
         {
-            AddZakazPanelRedact addZakazPanelRedact = new AddZakazPanelRedact();
+            AddZakazPanelRedact addZakazPanelRedact = new AddZakazPanelRedact(false);
             this.flowLayoutPanel1.Controls.Clear();
             this.flowLayoutPanel1.Controls.Add(addZakazPanelRedact);  
         }

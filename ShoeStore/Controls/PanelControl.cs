@@ -83,17 +83,34 @@ namespace ShoeStore
         {
             using (NpgsqlConnection connection = new NpgsqlConnection(Resources.connectionDB))
             {
-                connection.Open();
-                string query = $@"DELETE FROM public.tovar WHERE id_article = '{IdArticle}'; ";
-                using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
+                connection.Open();      
+                    string queryCheckOrders = $@"SELECT COUNT(*) FROM public.zakaz_tovar WHERE article_fk = '{IdArticle}'; ";
+                using (NpgsqlCommand commandCheck = new NpgsqlCommand(queryCheckOrders, connection))
                 {
-                    command.ExecuteNonQuery();
-                    {                    
-                        connection.Close();
+                    int orderCount = Convert.ToInt32(commandCheck.ExecuteScalar());
+                    if (orderCount > 0)
+                    {
+                        MessageBox.Show("Невозможно удалить товар, так как он связан с существующими заказами.", "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
-                    this.Parent.Controls.Remove(this);
-                    MessageBox.Show("Товар успешно удален из базы данных.", "Удаление товара", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }         
+                    else
+                    {
+                        if (MessageBox.Show("Вы уверены, что хотите удалить этот товар?", "Подтверждение удаления", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            string query = $@"DELETE FROM public.tovar WHERE id_article = '{IdArticle}'; ";
+                            using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
+                            {
+                                command.ExecuteNonQuery();
+                                {
+                                    connection.Close();
+                                }
+                                this.Parent.Controls.Remove(this);
+                                MessageBox.Show("Товар успешно удален из базы данных.", "Удаление товара", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                return;
+                            }
+                        }
+                    }
+                }
             }
         }
     }  

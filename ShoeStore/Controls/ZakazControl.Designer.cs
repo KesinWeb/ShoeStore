@@ -70,6 +70,7 @@
             resources.ApplyResources(this.buttonRedactZakaz, "buttonRedactZakaz");
             this.buttonRedactZakaz.Name = "buttonRedactZakaz";
             this.buttonRedactZakaz.UseVisualStyleBackColor = false;
+            this.buttonRedactZakaz.Click += new System.EventHandler(this.buttonRedactZakaz_Click);
             // 
             // buttonDeleteZakaz
             // 

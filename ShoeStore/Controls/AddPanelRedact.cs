@@ -39,7 +39,6 @@ namespace ShoeStore.Controls
             comboBoxPostavshik.Text = Postavchik;
             maskedTextBoxDiscount.Text = Discount.ToString();
             maskedTextBoxArticle.Text = ArticleTovar;
-            comboBoxEdinIzm.Text = EdinicIzm;
             textBoxOpisanie.Text = Opisanie;
             this.isEditMode = isEditMode;
             if (isEditMode)
@@ -63,7 +62,6 @@ namespace ShoeStore.Controls
             comboBoxPostavshik.Text = Postavchik;
             maskedTextBoxDiscount.Text = Discount.ToString();
             maskedTextBoxArticle.Text = ArticleTovar;
-            comboBoxEdinIzm.Text = EdinicIzm;
             textBoxOpisanie.Text = Opisanie;
         }
         public void AddTovar()
@@ -85,7 +83,7 @@ namespace ShoeStore.Controls
                 using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@name_tovar", comboBoxName.Text);
-                    command.Parameters.AddWithValue("@edin_izmer", comboBoxEdinIzm.Text);
+                    command.Parameters.AddWithValue("@edin_izmer", "шт.");
                     command.Parameters.AddWithValue("@sale", Convert.ToDouble(maskedTextBoxSale.Text));
                     command.Parameters.AddWithValue("@postavchik", comboBoxPostavshik.Text);
                     command.Parameters.AddWithValue("@proizvoditel", textBoxProizvoditel.Text);
@@ -129,7 +127,7 @@ namespace ShoeStore.Controls
                 using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@name_tovar", comboBoxName.Text);
-                    command.Parameters.AddWithValue("@edin_izmer", comboBoxEdinIzm.Text);
+                    command.Parameters.AddWithValue("@edin_izmer", "шт.");
                     command.Parameters.AddWithValue("@sale", Convert.ToDouble(maskedTextBoxSale.Text));
                     command.Parameters.AddWithValue("@postavchik", comboBoxPostavshik.Text);
                     command.Parameters.AddWithValue("@proizvoditel", textBoxProizvoditel.Text);
@@ -148,7 +146,7 @@ namespace ShoeStore.Controls
             using (NpgsqlConnection connection = new NpgsqlConnection(Resources.connectionDB))
             {
                 connection.Open();
-                string query = $@"SELECT name_tovar.name_tovar, edin_izmer, sale, postavchik.postavchik_name, proizvoditel.name_proizv, category_tovar.category, dicsount, quantity, opisanie, id_article
+                string query = $@"SELECT name_tovar.name_tovar, edin_izmer, sale, postavchik.postavchik_name, proizvoditel.name_proizv, category_tovar.category, dicsount, quantity, opisanie, picture, id_article
                                  FROM public.tovar
                                  JOIN name_tovar ON name_tovar.id = tovar.name_tovar_fk
                                  JOIN postavchik ON postavchik.id = tovar.postavchik_fk
@@ -157,13 +155,11 @@ namespace ShoeStore.Controls
                                  WHERE id_article = '{maskedTextBoxArticle.Text}' ";
                 using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
                 {
-                    //command.Parameters.AddWithValue("@id_article", ArticleTovar);
                     using (NpgsqlDataReader reader = command.ExecuteReader())
                     {
                         if (reader.Read())
                         {
                             comboBoxName.Text = reader.GetString(0);
-                            comboBoxEdinIzm.Text = reader.GetString(1);
                             maskedTextBoxSale.Text = reader.GetDouble(2).ToString();
                             comboBoxPostavshik.Text = reader.GetString(3);
                             textBoxProizvoditel.Text = reader.GetString(4);
@@ -171,7 +167,8 @@ namespace ShoeStore.Controls
                             maskedTextBoxDiscount.Text = reader.GetInt32(6).ToString();
                             maskedTextBoxQuantity.Text = reader.GetInt32(7).ToString();
                             textBoxOpisanie.Text = reader.GetString(8);
-                            maskedTextBoxArticle.Text = reader.GetString(9);
+                            buttonDownloadImage.Text = reader.GetString(9);
+                            maskedTextBoxArticle.Text = reader.GetString(10);
                         }
                     }
                 }

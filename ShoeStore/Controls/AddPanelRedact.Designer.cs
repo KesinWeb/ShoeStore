@@ -42,9 +42,9 @@
             this.buttonAddRedact = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelDovalenieRedact = new System.Windows.Forms.Label();
             this.pictureBoxPhotoTovar = new System.Windows.Forms.PictureBox();
             this.comboBoxName = new System.Windows.Forms.ComboBox();
-            this.comboBoxEdinIzm = new System.Windows.Forms.ComboBox();
             this.comboBoxPostavshik = new System.Windows.Forms.ComboBox();
             this.comboBoxCategory = new System.Windows.Forms.ComboBox();
             this.maskedTextBoxArticle = new System.Windows.Forms.MaskedTextBox();
@@ -52,10 +52,10 @@
             this.maskedTextBoxDiscount = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBoxSale = new System.Windows.Forms.MaskedTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.labelDovalenieRedact = new System.Windows.Forms.Label();
             this.textBoxProizvoditel = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.labelIzm = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhotoTovar)).BeginInit();
             this.SuspendLayout();
@@ -218,6 +218,17 @@
             this.panel1.Size = new System.Drawing.Size(889, 30);
             this.panel1.TabIndex = 28;
             // 
+            // labelDovalenieRedact
+            // 
+            this.labelDovalenieRedact.AutoSize = true;
+            this.labelDovalenieRedact.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelDovalenieRedact.Location = new System.Drawing.Point(30, 5);
+            this.labelDovalenieRedact.Margin = new System.Windows.Forms.Padding(5);
+            this.labelDovalenieRedact.Name = "labelDovalenieRedact";
+            this.labelDovalenieRedact.Size = new System.Drawing.Size(354, 24);
+            this.labelDovalenieRedact.TabIndex = 39;
+            this.labelDovalenieRedact.Text = "Добавление/Редактирование товара";
+            // 
             // pictureBoxPhotoTovar
             // 
             this.pictureBoxPhotoTovar.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -243,17 +254,6 @@
             this.comboBoxName.Name = "comboBoxName";
             this.comboBoxName.Size = new System.Drawing.Size(127, 21);
             this.comboBoxName.TabIndex = 30;
-            // 
-            // comboBoxEdinIzm
-            // 
-            this.comboBoxEdinIzm.FormattingEnabled = true;
-            this.comboBoxEdinIzm.Items.AddRange(new object[] {
-            "шт."});
-            this.comboBoxEdinIzm.Location = new System.Drawing.Point(343, 161);
-            this.comboBoxEdinIzm.Name = "comboBoxEdinIzm";
-            this.comboBoxEdinIzm.Size = new System.Drawing.Size(58, 21);
-            this.comboBoxEdinIzm.TabIndex = 31;
-            this.comboBoxEdinIzm.Text = "шт.";
             // 
             // comboBoxPostavshik
             // 
@@ -326,17 +326,6 @@
             this.panel2.Size = new System.Drawing.Size(889, 81);
             this.panel2.TabIndex = 38;
             // 
-            // labelDovalenieRedact
-            // 
-            this.labelDovalenieRedact.AutoSize = true;
-            this.labelDovalenieRedact.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelDovalenieRedact.Location = new System.Drawing.Point(30, 5);
-            this.labelDovalenieRedact.Margin = new System.Windows.Forms.Padding(5);
-            this.labelDovalenieRedact.Name = "labelDovalenieRedact";
-            this.labelDovalenieRedact.Size = new System.Drawing.Size(354, 24);
-            this.labelDovalenieRedact.TabIndex = 39;
-            this.labelDovalenieRedact.Text = "Добавление/Редактирование товара";
-            // 
             // textBoxProizvoditel
             // 
             this.textBoxProizvoditel.FormattingEnabled = true;
@@ -366,11 +355,25 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // labelIzm
+            // 
+            this.labelIzm.AutoEllipsis = true;
+            this.labelIzm.AutoSize = true;
+            this.labelIzm.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelIzm.Location = new System.Drawing.Point(345, 165);
+            this.labelIzm.Margin = new System.Windows.Forms.Padding(5);
+            this.labelIzm.Name = "labelIzm";
+            this.labelIzm.Size = new System.Drawing.Size(31, 17);
+            this.labelIzm.TabIndex = 42;
+            this.labelIzm.Text = "шт.";
+            this.labelIzm.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // AddPanelRedact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.Controls.Add(this.labelIzm);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.textBoxProizvoditel);
             this.Controls.Add(this.panel2);
@@ -380,7 +383,6 @@
             this.Controls.Add(this.maskedTextBoxArticle);
             this.Controls.Add(this.comboBoxCategory);
             this.Controls.Add(this.comboBoxPostavshik);
-            this.Controls.Add(this.comboBoxEdinIzm);
             this.Controls.Add(this.comboBoxName);
             this.Controls.Add(this.pictureBoxPhotoTovar);
             this.Controls.Add(this.panel1);
@@ -424,7 +426,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBoxPhotoTovar;
         private System.Windows.Forms.ComboBox comboBoxName;
-        private System.Windows.Forms.ComboBox comboBoxEdinIzm;
         private System.Windows.Forms.ComboBox comboBoxPostavshik;
         private System.Windows.Forms.ComboBox comboBoxCategory;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxArticle;
@@ -436,5 +437,6 @@
         private System.Windows.Forms.ComboBox textBoxProizvoditel;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label labelIzm;
     }
 }

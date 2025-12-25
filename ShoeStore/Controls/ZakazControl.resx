@@ -243,10 +243,10 @@
     <value>Times New Roman, 11.25pt, style=Bold</value>
   </data>
   <data name="labelDataDostavki.Location" type="System.Drawing.Point, System.Drawing">
-    <value>764, 1</value>
+    <value>764, 0</value>
   </data>
   <data name="labelDataDostavki.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 109</value>
+    <value>129, 112</value>
   </data>
   <data name="labelDataDostavki.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -273,7 +273,7 @@
     <value>Times New Roman, 9.75pt, style=Bold</value>
   </data>
   <data name="buttonRedactZakaz.Location" type="System.Drawing.Point, System.Drawing">
-    <value>638, 26</value>
+    <value>657, 31</value>
   </data>
   <data name="buttonRedactZakaz.Size" type="System.Drawing.Size, System.Drawing">
     <value>101, 23</value>
@@ -300,7 +300,7 @@
     <value>Times New Roman, 9.75pt, style=Bold</value>
   </data>
   <data name="buttonDeleteZakaz.Location" type="System.Drawing.Point, System.Drawing">
-    <value>638, 55</value>
+    <value>657, 60</value>
   </data>
   <data name="buttonDeleteZakaz.Size" type="System.Drawing.Size, System.Drawing">
     <value>101, 23</value>
@@ -330,7 +330,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>883, 104</value>
+    <value>896, 112</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ZakazControl</value>
