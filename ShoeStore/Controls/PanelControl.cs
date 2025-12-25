@@ -27,7 +27,7 @@ namespace ShoeStore
         public string Postavchik { get; set; }
         public string Count { get; set; }
         public string EdinicIzm { get; set; }
-        public string Quantity { get; set; }
+        public int Quantity { get; set; }
         public int Discount { get; set; }
         public string DiscountCount { get; set; }
         public string Picture { get; set; }
@@ -52,11 +52,14 @@ namespace ShoeStore
             labelCount.Text = Count;
             labelDiscountPrice.Text = DiscountCount;
             labelEdinIzm.Text = EdinicIzm;
-            labelQuantity.Text = Quantity;
-            //здесь реализация загрузки Картинки
-            pictureBox1.ImageLocation = Path.Combine(Application.StartupPath, "images") + "\\" + Picture;
-            //здесь реализиция вывода скидки под цвета
-            labelDiscount.Text = "Cкидка: " + Discount.ToString() + "%";
+
+            labelQuantity.Text = "Количество на складе: " + Quantity.ToString();
+            if (Quantity == 0)
+            {
+                labelQuantity.ForeColor = Color.Aqua;
+            }        
+            pictureBox1.ImageLocation = Path.Combine(Application.StartupPath, "images") + "\\" + Picture; //здесь реализация загрузки Картинки
+            labelDiscount.Text = "Cкидка: " + Discount.ToString() + "%"; //здесь реализиция вывода скидки под цвета
             if (Discount > 15)
             {
                 labelDiscount.BackColor = ColorTranslator.FromHtml("#2E8B57");

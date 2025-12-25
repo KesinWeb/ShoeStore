@@ -89,7 +89,7 @@ namespace ShoeStore
                             panelControl.Proizvoditel = "Производитель: " + reader.GetString(4);
                             panelControl.Category = "Категория: " + reader.GetString(5);
                             panelControl.Discount = reader.GetInt32(6);
-                            panelControl.Quantity = "Количество на складе: " + reader.GetInt32(7).ToString();
+                            panelControl.Quantity = reader.GetInt32(7);
                             panelControl.Opisanie = "Описание: " + reader.GetString(8);
                             panelControl.Picture = reader.IsDBNull(9) ? "picture.png" : reader.GetString(9);
                             panelControl.DiscountCount = reader.GetDouble(11).ToString() + " руб.";
