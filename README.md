@@ -1,4 +1,4 @@
 
 # ShoeStore ООО "Обувь"
-obuvnoimagazindemo2026BD.sql это бэкап моего БД с данными!
+obuvnoimagazindemo2026BD.sql это бэкап моего БД с данными! postgres 17.5 min ver
 # Я буду еще больше упрощать, попробую по разному реализовать это задание
