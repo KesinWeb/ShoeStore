@@ -45,6 +45,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.checkBoxDesc = new System.Windows.Forms.CheckBox();
             this.checkBoxAsc = new System.Windows.Forms.CheckBox();
+            this.buttonBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,7 +131,7 @@
             this.buttonZakaz.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.buttonZakaz.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonZakaz.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonZakaz.Location = new System.Drawing.Point(1126, 493);
+            this.buttonZakaz.Location = new System.Drawing.Point(1126, 447);
             this.buttonZakaz.Name = "buttonZakaz";
             this.buttonZakaz.Size = new System.Drawing.Size(141, 33);
             this.buttonZakaz.TabIndex = 15;
@@ -153,7 +154,7 @@
             this.buttonAddTovar.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.buttonAddTovar.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonAddTovar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonAddTovar.Location = new System.Drawing.Point(1126, 405);
+            this.buttonAddTovar.Location = new System.Drawing.Point(1126, 359);
             this.buttonAddTovar.Name = "buttonAddTovar";
             this.buttonAddTovar.Size = new System.Drawing.Size(141, 33);
             this.buttonAddTovar.TabIndex = 17;
@@ -166,7 +167,7 @@
             this.buttonAddZakaz.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.buttonAddZakaz.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonAddZakaz.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonAddZakaz.Location = new System.Drawing.Point(1126, 532);
+            this.buttonAddZakaz.Location = new System.Drawing.Point(1126, 486);
             this.buttonAddZakaz.Name = "buttonAddZakaz";
             this.buttonAddZakaz.Size = new System.Drawing.Size(141, 33);
             this.buttonAddZakaz.TabIndex = 18;
@@ -179,7 +180,7 @@
             this.buttonTovar.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.buttonTovar.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonTovar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonTovar.Location = new System.Drawing.Point(1125, 366);
+            this.buttonTovar.Location = new System.Drawing.Point(1125, 320);
             this.buttonTovar.Name = "buttonTovar";
             this.buttonTovar.Size = new System.Drawing.Size(141, 33);
             this.buttonTovar.TabIndex = 19;
@@ -239,12 +240,26 @@
             this.checkBoxAsc.UseVisualStyleBackColor = true;
             this.checkBoxAsc.CheckedChanged += new System.EventHandler(this.checkBoxAsc_CheckedChanged);
             // 
+            // buttonBack
+            // 
+            this.buttonBack.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.buttonBack.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonBack.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonBack.Location = new System.Drawing.Point(1126, 535);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(141, 33);
+            this.buttonBack.TabIndex = 25;
+            this.buttonBack.Text = "Назад";
+            this.buttonBack.UseVisualStyleBackColor = false;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(1279, 587);
+            this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.checkBoxAsc);
             this.Controls.Add(this.checkBoxDesc);
             this.Controls.Add(this.label4);
@@ -292,6 +307,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox checkBoxDesc;
         private System.Windows.Forms.CheckBox checkBoxAsc;
+        private System.Windows.Forms.Button buttonBack;
     }
 }
 
