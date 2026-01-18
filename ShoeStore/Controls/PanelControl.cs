@@ -93,7 +93,7 @@ namespace ShoeStore
                     int orderCount = Convert.ToInt32(commandCheck.ExecuteScalar());
                     if (orderCount > 0)
                     {
-                        MessageBox.Show("Невозможно удалить товар, так как он связан с существующими заказами.", "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Невозможно удалить товар, так как он связан с существующими заказами.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
                     else
