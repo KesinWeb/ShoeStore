@@ -221,12 +221,5 @@ namespace ShoeStore
             this.flowLayoutPanel1.Controls.Clear();
             this.flowLayoutPanel1.Controls.Add(addZakazPanelRedact);  
         }
-
-        private void buttonBack_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            AutForm autForm = new AutForm();
-            autForm.ShowDialog();
-        }
     }  
 }
