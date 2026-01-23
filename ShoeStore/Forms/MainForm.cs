@@ -62,18 +62,20 @@ namespace ShoeStore
             {
                 connection.Open();
                 string query = $@"SELECT name_tovar.name_tovar, edin_izmer, sale, postavchik.postavchik_name, proizvoditel.name_proizv, category_tovar.category, dicsount, quantity, opisanie, picture, id_article,
-                                ROUND(sale * (100 - dicsount) / 100,2) AS final_price
-                                FROM public.tovar
-                                JOIN name_tovar ON name_tovar.id = tovar.name_tovar_fk
-                                JOIN postavchik ON postavchik.id = tovar.postavchik_fk
-                                JOIN proizvoditel ON proizvoditel.id_pk_proiz = tovar.proizvoditel_fk
-                                JOIN category_tovar ON category_tovar.id_pk_category_tovar = tovar.category_name_fk 
-                                {(searchSrt != "" ? $"WHERE name_tovar.name_tovar ILIKE '%{searchSrt}%' " +   //реализация поиска через запросник        
-                                $"OR proizvoditel.name_proizv ILIKE '%{searchSrt}%' " +
-                                $"OR category_tovar.category ILIKE '%{searchSrt}%'" +
-                                $"OR opisanie ILIKE '%{searchSrt}%'" : " ")} 
-                                {(postavchik != "Все поставщики" ? $"WHERE postavchik.postavchik_name = '{postavchik}' " : " ")} 
-                                ORDER BY tovar.sale {orderBy} ";
+                 ROUND(sale * (100 - dicsount) / 100,2) AS final_price
+                 FROM public.tovar
+                 JOIN name_tovar ON name_tovar.id = tovar.name_tovar_fk
+                 JOIN postavchik ON postavchik.id = tovar.postavchik_fk
+                 JOIN proizvoditel ON proizvoditel.id_pk_proiz = tovar.proizvoditel_fk
+                 JOIN category_tovar ON category_tovar.id_pk_category_tovar = tovar.category_name_fk 
+                 {(searchSrt != "" || postavchik != "Все поставщики" ? "WHERE " : "")} 
+                 {(searchSrt != "" ? $" (name_tovar.name_tovar ILIKE '%{searchSrt}%' " +
+                   $"OR proizvoditel.name_proizv ILIKE '%{searchSrt}%' " +
+                   $"OR category_tovar.category ILIKE '%{searchSrt}%' " +
+                   $"OR opisanie ILIKE '%{searchSrt}%')" : "")} 
+                 {(searchSrt != "" && postavchik != "Все поставщики" ? " AND " : "")} 
+                 {(postavchik != "Все поставщики" ? $"postavchik.postavchik_name = '{postavchik}' " : "")} 
+                 ORDER BY tovar.sale {orderBy} ";
                 using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
                 {
                     using (NpgsqlDataReader reader = command.ExecuteReader())
